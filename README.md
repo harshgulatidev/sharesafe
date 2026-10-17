@@ -2,7 +2,7 @@
 
 **Clean it before you share it.** ShareSafe helps remove secrets and personal details from logs, support tickets, and messages before you paste them into a public issue or AI chat.
 
-**[Open the live app](https://westwordcorp.com/tools/sharesafe/)** · **[Report a bug](https://github.com/harshgulatidev/sharesafe/issues)**
+**[Open the live app](https://harshgulatidev.github.io/sharesafe/)** · **[Report a bug](https://github.com/harshgulatidev/sharesafe/issues)**
 
 ![ShareSafe interface](assets/preview.svg)
 
