@@ -22,7 +22,7 @@
       { label: 'SECRET', regex: /\b(?:api[_-]?key|access[_-]?token|refresh[_-]?token|client[_-]?secret|password|passwd|secret|token)\s*[:=]\s*["']?([^\s"'`,;]{6,})/gi, group: 1 }
     ],
     email: [{ label: 'EMAIL', regex: /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi }],
-    phone: [{ label: 'PHONE', regex: /(?<![\w.])(?:\+?\d{1,3}[ .-]?)?(?:\(?\d{2,4}\)?[ .-]?)\d{3,4}[ .-]?\d{3,4}(?![\w.])/g }],
+    phone: [{ label: 'PHONE', regex: /(?<![\w.])(?:\+\d{1,3}[ .-]?)?(?:\(?\d{3}\)?[ .-]?\d{3}[ .-]?\d{4}|\d{3}[ .-]\d{3}[ .-]\d{4}|\d{5}[ .-]?\d{5}|\d{10})(?![\w.])/g }],
     ip: [{ label: 'IP', regex: /\b(?:(?:25[0-5]|2[0-4]\d|1?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|1?\d?\d)\b/g }]
   };
 
