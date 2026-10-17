@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f6f2">
+  <meta name="description" content="Clean sensitive details from logs and messages before sharing them. ShareSafe scans and redacts locally in your browser.">
+  <meta property="og:title" content="ShareSafe — clean it before you share it">
+  <meta property="og:description" content="Redact secrets and personal details from logs before you share them. Your text stays in your browser.">
+  <meta property="og:type" content="website">
+  <title>ShareSafe — clean it before you share it</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="ShareSafe home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3.5 27 8v7.3c0 7.1-4.6 11.7-11 14.2C9.6 27 5 22.4 5 15.3V8l11-4.5Z"/><path d="m11.2 16.4 3.2 3.2 6.8-7"/></svg></span>
+      <span>share<span class="brand-light">safe</span></span>
+    </a>
+    <div class="topbar-right"><span class="local-pill"><i></i> Runs in your browser</span><a class="github-link" href="https://github.com/harshgulatidev/sharesafe" target="_blank" rel="noreferrer">View on GitHub <span aria-hidden="true">↗</span></a></div>
+  </header>
+
+  <main id="top">
+    <section class="intro">
+      <div class="eyebrow"><span class="eyebrow-line"></span> YOUR LAST CHECK BEFORE SEND</div>
+      <h1>Clean it before<br><span>you share it.</span></h1>
+      <p class="intro-copy">Logs, screenshots, support tickets, AI chats. Catch the private details hiding in the text before they leave your hands.</p>
+      <div class="trust-note"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5 16.5 5v4.3c0 4.2-2.8 6.9-6.5 8.2-3.7-1.3-6.5-4-6.5-8.2V5L10 2.5Z"/><path d="m7.2 9.8 1.8 1.8 3.8-4"/></svg><span><strong>Private by design.</strong> Text is processed on this device and never uploaded.</span></div>
+    </section>
+
+    <section class="workspace" aria-label="Text redaction workspace">
+      <div class="workspace-head">
+        <div><div class="step-label"><span>01</span> PASTE OR DROP A FILE</div><h2>Give it a quick scan</h2></div>
+        <button class="text-button" id="load-example" type="button">Try a sample <span aria-hidden="true">↗</span></button>
+      </div>
+      <div class="editors">
+        <section class="editor-card source-card">
+          <div class="card-heading"><label for="source">Original text</label><span id="source-count">0 characters</span></div>
+          <textarea id="source" spellcheck="false" placeholder="Paste an error log, config snippet, or message here…" aria-describedby="drop-hint"></textarea>
+          <div class="editor-footer"><span id="drop-hint">Paste with Ctrl + V, or drop a .txt, .log, or .json file</span><button class="icon-button" id="clear-source" type="button" aria-label="Clear text" title="Clear text">×</button><input id="file-input" type="file" accept=".txt,.log,.json,text/plain,application/json" hidden></div>
+        </section>
+        <div class="transfer" aria-hidden="true"><span>→</span></div>
+        <section class="editor-card result-card">
+          <div class="card-heading"><label for="result">Safe to share</label><span id="result-state" class="result-state">Waiting for text</span></div>
+          <div id="result" class="result-area" role="region" aria-live="polite" aria-label="Redacted text"><span class="placeholder-copy">Your cleaned text will<br>appear here.</span></div>
+          <div class="editor-footer result-footer"><span id="redaction-count">Nothing redacted yet</span><button class="copy-button" id="copy-result" type="button" disabled><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="7" y="6" width="9" height="11" rx="1.5"/><path d="M13 6V4.8A1.8 1.8 0 0 0 11.2 3H5.8A1.8 1.8 0 0 0 4 4.8v7.4A1.8 1.8 0 0 0 5.8 14H7"/></svg>Copy safe text</button></div>
+        </section>
+      </div>
+
+      <div class="toolbar">
+        <div class="scan-options"><span class="options-title">LOOK FOR</span>
+          <label class="toggle"><input type="checkbox" data-kind="secret" checked><span>Secrets</span></label>
+          <label class="toggle"><input type="checkbox" data-kind="email" checked><span>Emails</span></label>
+          <label class="toggle"><input type="checkbox" data-kind="phone" checked><span>Phone numbers</span></label>
+          <label class="toggle"><input type="checkbox" data-kind="ip" checked><span>IP addresses</span></label>
+        </div>
+        <button class="scan-button" id="scan" type="button"><span class="scan-icon">✳</span> Scan &amp; redact <span class="shortcut">Ctrl ↵</span></button>
+      </div>
+
+      <details class="custom-rules">
+        <summary><span class="plus">+</span> Add your own words to redact <span class="optional">OPTIONAL</span></summary>
+        <div class="custom-content"><label for="custom-terms">One exact word or phrase per line. Matching ignores letter case.</label><textarea id="custom-terms" rows="3" placeholder="Project codename&#10;Customer name"></textarea></div>
+      </details>
+    </section>
+
+    <section class="how-it-works" aria-label="How ShareSafe works">
+      <div class="how-item"><span class="how-number">A</span><p><strong>Drop it in.</strong> Paste a log or choose a local text file.</p></div>
+      <div class="how-item"><span class="how-number">B</span><p><strong>Review the scan.</strong> Secrets and contact details get clear placeholders.</p></div>
+      <div class="how-item"><span class="how-number">C</span><p><strong>Share with care.</strong> Copy the cleaned version. Nothing is stored.</p></div>
+    </section>
+
+    <section class="limits"><span class="limits-mark">i</span><p>Automated scans can miss things. Review the cleaned text before sharing, especially for unusual IDs or private details.</p></section>
+  </main>
+  <footer><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 3.5 27 8v7.3c0 7.1-4.6 11.7-11 14.2C9.6 27 5 22.4 5 15.3V8l11-4.5Z"/><path d="m11.2 16.4 3.2 3.2 6.8-7"/></svg></span><span>share<span class="brand-light">safe</span></span></a><span>Open source · No uploads · Built for the moment before “send”</span><a href="https://github.com/harshgulatidev/sharesafe/blob/main/LICENSE" target="_blank" rel="noreferrer">MIT licensed ↗</a></footer>
+</body>
+</html>
