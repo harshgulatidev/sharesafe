@@ -21,7 +21,7 @@ Repeated values use the same placeholder during a scan, so the cleaned log stays
 
 ## Privacy
 
-ShareSafe has no backend. Scanning and file reading happen in the browser; source text is not sent to a service or saved by the app. Clearing the page clears its in-memory text. The page loads its fonts from Google Fonts; self-host the fonts or remove the `@import` in `style.css` if you want every request to stay on your device.
+ShareSafe has no backend. Scanning and file reading happen in the browser; source text is not sent to a service or saved by the app. Clearing the page clears its in-memory text. The app uses system fonts and makes no third-party requests.
 
 ## Use it
 
